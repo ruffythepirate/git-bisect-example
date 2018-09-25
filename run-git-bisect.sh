@@ -3,7 +3,7 @@
 START=$1
 END=$(git rev-parse HEAD)
 
-$(./test-condition.sh)
+./test-condition.sh
 RESULT=$?
 if [ $RESULT -eq 0 ]; then
   echo "The current revision is working, expected it to be failing!"
@@ -11,7 +11,7 @@ if [ $RESULT -eq 0 ]; then
 fi
 
 git checkout $START
-$(./test-condition.sh)
+./test-condition.sh
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
   echo "The start revision is failing expected it to be good!"
@@ -26,7 +26,7 @@ git bisect good
 
 while true; 
 do
-  $(./test-condition.sh)
+  ./test-condition.sh
   RESULT=$?
   if [ $RESULT -eq 0 ]; then
     BISECT_RESULT=$(git bisect good)
@@ -34,7 +34,8 @@ do
     BISECT_RESULT=$(git bisect bad)
   fi
   
-  if [ $BISECT_RESULT = *"is the first bad commit"* ]; then
+  HAS_FOUND_IT=$(echo $BISECT_RESULT | grep "is the first bad commit")
+  if [ "$HAS_FOUND_IT" != "" ]; then
     echo "The guilty commit has been found!!!"
     echo $BISECT_RESULT
     exit 0
