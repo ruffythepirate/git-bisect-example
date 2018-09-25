@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "SUCCESS 95"
+echo "SUCCESS 96"
 exit 0
