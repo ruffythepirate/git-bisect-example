@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "SUCCESS 100"
-exit 0
+echo "FAIL 0"
+exit 1
