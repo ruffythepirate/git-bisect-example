@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "FAIL 1"
+echo "FAIL 2"
 exit 1
