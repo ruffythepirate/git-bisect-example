@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "SUCCESS 5"
+echo "SUCCESS 6"
 exit 0
